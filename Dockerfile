@@ -23,6 +23,10 @@ RUN apt-get update && apt-get install -y \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
+    python get-pip.py && \
+    rm get-pip.py
+
 RUN pip --no-cache-dir install \
         ipykernel \
         jupyter \
@@ -31,10 +35,10 @@ RUN pip --no-cache-dir install \
     python -m ipykernel.kernelspec
 
 # Install bleeding-edge Theano
-RUN pip install --upgrade --no-deps git+git://github.com/Theano/Theano.git
+RUN pip install --no-cache-dir --upgrade --no-deps git+git://github.com/Theano/Theano.git
 
 # Install bleeding-edge Lasagne
-RUN pip install --upgrade https://github.com/Lasagne/Lasagne/archive/master.zip
+RUN pip install --no-cache-dir --upgrade https://github.com/Lasagne/Lasagne/archive/master.zip
 
 # Set up our notebook config.
 COPY jupyter_notebook_config.py /root/.jupyter/
