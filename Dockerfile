@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
         python-nose \
         python-numpy \
         python-scipy \
+        python-sklearn \
         rsync \
         unzip \
         && \
