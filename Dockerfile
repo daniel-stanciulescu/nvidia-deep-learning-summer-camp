@@ -36,6 +36,9 @@ RUN pip --no-cache-dir install \
         && \
     python -m ipykernel.kernelspec
 
+# Upgrade matplotlib to a newer version
+RUN pip install --no-cache --upgrade matplotlib
+
 # Install bleeding-edge Theano
 RUN pip install --no-cache-dir --upgrade --no-deps git+git://github.com/Theano/Theano.git
 
